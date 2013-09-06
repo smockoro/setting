@@ -1,0 +1,15 @@
+1.vimrc
+    setting of vim 
+    then MacVim 
+        replace this vimrc from vimrc in MacVim.app
+    then LinuxMint
+        type "#cp ~/setting/vimrc /usr/share/vim/"
+2.gvimrc
+    same setting of vimrc
+
+3.molokai.vim
+    This is the color scheme. so, move color folder.
+
+4.zshrc.org
+    Rename zshrc.org to zshrc. And move to~/.
+    If you want to use zsh in LinuxMint, type "$sudo apt-get install zsh"
