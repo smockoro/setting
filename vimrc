@@ -53,6 +53,13 @@ NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'basyura/bitly.vim'
 NeoBundle 'kakkyz81/evervim'
 NeoBundle 'git://github.com/thinca/vim-portal'
+NeoBundle 'git://github.com/tpope/vim-commentary'
+NeoBundle 'git://github.com/kana/vim-textobj-entire'
+NeoBundle 'git://github.com/kana/vim-textobj-user'
+NeoBundle 'git://github.com/kana/vim-textobj-line'
+NeoBundle 'git://github.com/kana/vim-textobj-function'
+NeoBundle 'git://github.com/kana/vim-textobj-syntax'
+
 filetype plugin indent on
 "neocomplcaheの設定
 " Disable AutoComplPop.
@@ -223,7 +230,6 @@ cmap <C-l> <Right>
 cmap <C-h> <Left>
 "imap <C-b> <ESC>bi
 "imap <C-w> <ESC><right>wi
-imap <C-r> <ESC>R
 imap <C-d> <del>
 cmap <C-d> <del>
 imap <C-h> <BackSpace>

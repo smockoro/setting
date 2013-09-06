@@ -44,4 +44,4 @@ imap <c-l> <Right>
 
 set lines=55
 set columns=120
-
+set guifont=Ricty/ 12
