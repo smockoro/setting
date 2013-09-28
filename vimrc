@@ -217,14 +217,14 @@ set cursorline
 " When insert mode, enable hjkl and enable go to home/end.
 imap <C-e> <END>
 imap <C-a> <HOME>
-imap <C-j> <Down>
-imap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
 imap <C-g> <ESC>
 cmap <C-g> <ESC>
-imap { {}<Left>
-imap [ []<Left>
-imap ( ()<Left>
-imap < <><Left>
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap ( ()<Left>
+inoremap < <><Left>
 cmap <C-a> <Home>
 cmap <C-e> <End>
 cmap <C-l> <Right>
@@ -233,16 +233,16 @@ cmap <C-h> <Left>
 "imap <C-w> <ESC><right>wi
 imap <C-d> <del>
 cmap <C-d> <del>
-imap <C-h> <ESC>xa
-cmap <C-h> <ESC>xa
+imap <C-h> <BackSpace><del>
+cmap <C-h> <BackSpace><del>
 set nobackup
 set hidden
 set noswapfile
 set autoread
 syntax on
 nmap <C-s> :source /usr/share/vim/vimrc<CR>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
+"inoremap <Up> <Nop>
+"inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 noremap <Up> <Nop>
@@ -251,5 +251,5 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [b :bfirst<CR>
-nnoremap <silent> ]b :blast<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
