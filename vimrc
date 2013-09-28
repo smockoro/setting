@@ -59,6 +59,7 @@ NeoBundle 'git://github.com/kana/vim-textobj-user'
 NeoBundle 'git://github.com/kana/vim-textobj-line'
 NeoBundle 'git://github.com/kana/vim-textobj-function'
 NeoBundle 'git://github.com/kana/vim-textobj-syntax'
+NeoBundle 'git://github.com/tpope/vim-surround'
 
 filetype plugin indent on
 "neocomplcaheの設定
@@ -232,12 +233,23 @@ cmap <C-h> <Left>
 "imap <C-w> <ESC><right>wi
 imap <C-d> <del>
 cmap <C-d> <del>
-imap <C-h> <BackSpace>
-cmap <C-h> <BackSpace>
+imap <C-h> <ESC>xa
+cmap <C-h> <ESC>xa
 set nobackup
 set hidden
 set noswapfile
 set autoread
 syntax on
 nmap <C-s> :source /usr/share/vim/vimrc<CR>
-
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [b :bfirst<CR>
+nnoremap <silent> ]b :blast<CR>
