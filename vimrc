@@ -44,7 +44,7 @@ NeoBundle 'html5.vim'
 NeoBundle 'c.vim'
 NeoBundle 'Pydiction'
 NeoBundle 'mitechie/pyflakes-pathogen'
-NeoBundle 'git://github.com/Lokaltog/vim-powerline'
+"NeoBundle 'git://github.com/Lokaltog/vim-powerline'
 NeoBundle 'basyura/TweetVim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'basyura/twibill.vim'
@@ -60,7 +60,12 @@ NeoBundle 'git://github.com/kana/vim-textobj-line'
 NeoBundle 'git://github.com/kana/vim-textobj-function'
 NeoBundle 'git://github.com/kana/vim-textobj-syntax'
 NeoBundle 'git://github.com/tpope/vim-surround'
-
+NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+NeoBundle 'alpaca-tc/alpaca_powertabline'
+NeoBundle 'git://github.com/osyo-manga/vim-over'
+NeoBundle 'git://github.com/terryma/vim-expand-region'
+NeoBundle 'git://github.com/coderifous/textobj-word-column.vim'
+NeoBundle 'git://github.com/mhinz/vim-startify'
 filetype plugin indent on
 "neocomplcaheの設定
 " Disable AutoComplPop.
