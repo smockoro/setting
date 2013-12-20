@@ -238,8 +238,6 @@ cmap <C-h> <Left>
 "imap <C-w> <ESC><right>wi
 imap <C-d> <del>
 cmap <C-d> <del>
-imap <C-h> <BackSpace><del>
-cmap <C-h> <BackSpace><del>
 set nobackup
 set hidden
 set noswapfile
@@ -248,8 +246,6 @@ syntax on
 nmap <C-s> :source /usr/share/vim/vimrc<CR>
 "inoremap <Up> <Nop>
 "inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -258,3 +254,6 @@ nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
+colorscheme molokai
+set t_Co=256
+let g:molokai_original=1

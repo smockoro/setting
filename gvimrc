@@ -44,4 +44,5 @@ imap <c-l> <Right>
 
 set lines=55
 set columns=120
-set guifont=Ricty/ 12
+set guifont=Ricty\ for\ Powerline\ 14
+let g:Powerline_symbols = 'fancy'
