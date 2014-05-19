@@ -66,6 +66,10 @@ NeoBundle 'git://github.com/osyo-manga/vim-over'
 NeoBundle 'git://github.com/terryma/vim-expand-region'
 NeoBundle 'git://github.com/coderifous/textobj-word-column.vim'
 NeoBundle 'git://github.com/mhinz/vim-startify'
+NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'git://github.com/Yggdroot/indentLine'
 filetype plugin indent on
 "neocomplcaheの設定
 " Disable AutoComplPop.
@@ -220,16 +224,12 @@ set showcmd
 set cursorline
 
 " When insert mode, enable hjkl and enable go to home/end.
-imap <C-e> <END>
-imap <C-a> <HOME>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
-imap <C-g> <ESC>
-cmap <C-g> <ESC>
-inoremap { {}<Left>
-inoremap [ []<Left>
-inoremap ( ()<Left>
-inoremap < <><Left>
+"inoremap { {}<Left>
+"inoremap [ []<Left>
+"inoremap ( ()<Left>
+"inoremap < <><Left>
 cmap <C-a> <Home>
 cmap <C-e> <End>
 cmap <C-l> <Right>
@@ -257,3 +257,5 @@ nnoremap <silent> ]B :blast<CR>
 colorscheme molokai
 set t_Co=256
 let g:molokai_original=1
+let g:indentLine_color_term = 111
+let g:indentLine_color_gui = '#708090'

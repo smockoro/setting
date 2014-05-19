@@ -166,6 +166,7 @@ alias mv='mv -i'
  
 alias mkdir='mkdir -p'
  
+alias pd='popd'
 alias edit='vim --remote-tab-silent'
 alias e=edit
 alias quicklook='qlmanage -p'
