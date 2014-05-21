@@ -163,8 +163,9 @@ alias ll='ls -l'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
- 
 alias mkdir='mkdir -p'
+alias py2='python2'
+alias py3='python3'
  
 alias pd='popd'
 alias edit='vim --remote-tab-silent'

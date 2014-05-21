@@ -70,6 +70,9 @@ NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'git://github.com/Yggdroot/indentLine'
+NeoBundle 'git://github.com/thinca/vim-quickrun'
+
+
 filetype plugin indent on
 "neocomplcaheの設定
 " Disable AutoComplPop.
@@ -259,3 +262,13 @@ set t_Co=256
 let g:molokai_original=1
 let g:indentLine_color_term = 111
 let g:indentLine_color_gui = '#708090'
+
+let g:quickrun_config = {
+\    '_': {
+\       'hook/time/enable': '1',
+\       'outputter/buffer/split' : ':botright',
+\      'outputter/buffer/close_on_empty' : 1,
+\    },
+\}
+
+autocmd QuickFixCmdPost *grep* cwindow
