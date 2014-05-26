@@ -24,7 +24,7 @@ if has('vim_starting')
 
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
-NeoBundle 'git://github.com/Shougo/clang_complete.git'
+"NeoBundle 'git://github.com/Shougo/clang_complete.git'
 NeoBundle 'git://github.com/Shougo/echodoc.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
@@ -71,7 +71,10 @@ NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'git://github.com/Yggdroot/indentLine'
 NeoBundle 'git://github.com/thinca/vim-quickrun'
-
+NeoBundle 'git://github.com/thinca/vim-qfreplace'
+NeoBundle 'git://github.com/osyo-manga/vim-operator-blockwise'
+NeoBundle 'osyo-manga/unite-quickfix'
+NeoBundle 'osyo-manga/shabadou.vim'
 
 filetype plugin indent on
 "neocomplcaheの設定
@@ -257,6 +260,11 @@ nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
+nnoremap <silent> [q :cprevious<CR>
+nnoremap <silent> ]q :cnext<CR>
+nnoremap <silent> [Q :c<C-u>cfirst<CR>
+nnoremap <silent> ]Q :c<C-u>clast<CR>
+
 colorscheme molokai
 set t_Co=256
 let g:molokai_original=1
@@ -272,3 +280,8 @@ let g:quickrun_config = {
 \}
 
 autocmd QuickFixCmdPost *grep* cwindow
+
+"vim-operator-blockwiseの設定
+nmap YY <Plug>(operator-blockwise-yank-head)
+nmap DD <Plug>(operator-blockwise-delete-head)
+nmap CC <Plug>(operator-blockwise-change-head)
