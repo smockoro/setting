@@ -66,7 +66,6 @@ NeoBundle 'git://github.com/osyo-manga/vim-over'
 NeoBundle 'git://github.com/terryma/vim-expand-region'
 NeoBundle 'git://github.com/coderifous/textobj-word-column.vim'
 NeoBundle 'git://github.com/mhinz/vim-startify'
-NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'git://github.com/Yggdroot/indentLine'
@@ -75,6 +74,9 @@ NeoBundle 'git://github.com/thinca/vim-qfreplace'
 NeoBundle 'git://github.com/osyo-manga/vim-operator-blockwise'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'osyo-manga/shabadou.vim'
+"Haskell
+NeoBundle 'git://github.com/eagletmt/ghcmod-vim'
+NeoBundle 'git://github.com/dag/vim2hs'
 
 filetype plugin indent on
 "neocomplcaheの設定
