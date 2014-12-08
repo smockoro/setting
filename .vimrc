@@ -74,14 +74,6 @@ NeoBundle 'git://github.com/thinca/vim-qfreplace'
 NeoBundle 'git://github.com/osyo-manga/vim-operator-blockwise'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'osyo-manga/shabadou.vim'
-"Haskell
-NeoBundle 'git://github.com/eagletmt/ghcmod-vim'
-NeoBundle 'git://github.com/dag/vim2hs'
-NeoBundle 'git://github.com/eagletmt/neco-ghc'
-NeoBundle 'git://github.com/eagletmt/unite-haddock'
-NeoBundle 'git://github.com/kana/vim-filetype-haskell'
-NeoBundle 'git://github.com/thinca/vim-ref'
-NeoBundle 'git://github.com/ujihisa/ref-hoogle'
 
 filetype plugin indent on
 "neocomplcaheの設定
@@ -105,13 +97,6 @@ let g:neocomplcache_dictionary_filetype_lists = {
 \ 'vimshell' : $HOME.'/.vimshell_hist',
 \ 'scheme' : $HOME.'/.gosh_completions'
 \ }
-
-"neco-ghc setting
-let g:ycm_semantic_triggers = {'haskell': ['.']}
-let g:necoghc_enable_detailed_browse = 1
-
-"ghc-mod path
-let $PATH = $PATH.':'.expand('/Users/ooshimatakahiro/Library/Haskell/bin')
 
 " Define keyword.
 "if !exists('g:neocomplcache_keyword_patterns')
