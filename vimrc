@@ -86,7 +86,12 @@ NeoBundle 'git://github.com/thinca/vim-ref'
 NeoBundle 'git://github.com/ujihisa/ref-hoogle'
 
 filetype plugin indent on
-"neocomplcaheの設定
+"""""""""""""""""""""""""""""""""""""""""""""
+"
+"          neocomplcaheの設定
+"
+"""""""""""""""""""""""""""""""""""""""""""""
+
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplcache.
@@ -108,13 +113,6 @@ let g:neocomplcache_dictionary_filetype_lists = {
 \ 'scheme' : $HOME.'/.gosh_completions'
 \ }
 
-"neco-ghc setting
-let g:ycm_semantic_triggers = {'haskell': ['.']}
-let g:necoghc_enable_detailed_browse = 1
-
-"ghc-mod path
-let $PATH = $PATH.':'.expand('/Users/ooshimatakahiro/Library/Haskell/bin')
-
 " Define keyword.
 "if !exists('g:neocomplcache_keyword_patterns')
 "let g:neocomplcache_keyword_patterns = {}
@@ -134,10 +132,35 @@ let $PATH = $PATH.':'.expand('/Users/ooshimatakahiro/Library/Haskell/bin')
 "inoremap  neocomplcache#close_popup()
 "inoremap  neocomplcache#cancel_popup()
 
-"setting of evervim"
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            neco-ghcの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_semantic_triggers = {'haskell': ['.']}
+let g:necoghc_enable_detailed_browse = 1
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            ghcmod-vimの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+let $PATH = $PATH.':'.expand('/Users/ooshimatakahiro/Library/Haskell/bin')
+"let $PATH = $PATH.':'.expand('~/.cabal/bin')
+
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            evervimの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
 let g:evervim_devtoken = 'S=s39:U=5bfcd4:E=14743493e33:C=13feb981237:P=1cd:A=en-devtoken:V=2:H=e94ee9e2a26cf43ec8b3df6a6b7fc917'
 
-"setting of easymotion
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            easymotionの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
 " ホームポジションに近いキーを使う
 let g:EasyMotion_keys='hjklasdfgyuiopqwertnmzxcvbHJKLASDFGYUIOPQWERTNMZXCVB'
 " 「'」 + 何かにマッピング
@@ -148,12 +171,54 @@ let g:EasyMotion_grouping=1
 hi EasyMotionTarget ctermbg=none ctermfg=red
 hi EasyMotionShade  ctermbg=none ctermfg=blue
 
-"indent-guidesの設定
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            quickrunの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+let g:quickrun_config = {
+\    '_': {
+\       'outputter/buffer/split' : ':botright',
+\       'outputter/buffer/close_on_empty' : 1,
+\       'runner': 'vimproc',
+\       'runner/vimproc/updatetime': 40,
+\       'hook/shabadoubi_touch_henshin/enable': 1,
+\       'hook/shabadoubi_touch_henshin/wait': 20,
+\       'outputter': 'multi:buffer:quickfix',
+\       'hook/close_buffer/enable_empty data': 1,
+\       'hook/close_buffer/enable_failure': 1,
+\       'hook/close_quickfix/enable_exit' : 1,
+\      'hook/unite_quickfix/enable_failure' : 1,
+\       'hook/close_unite_quickfix/enable_hook_loaded' : 1,
+\    },
+\}
+"Uniteへ出力するとき
+"\       'hook/unite_quickfix/enable_failure' : 1,
+"\       'hook/close_unite_quickfix/enable_hook_loaded' : 1,
+
+autocmd QuickFixCmdPost *grep* cwindow
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            vim-operator-blockwiseの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+nmap YY <Plug>(operator-blockwise-yank-head)
+nmap DD <Plug>(operator-blockwise-delete-head)
+nmap CC <Plug>(operator-blockwise-change-head)
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            indent-guidesの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
 "let g:indent_guides_auto_colors = 0
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=#98fb98 ctermbg=blue
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#00ff7f ctermbg=green
 "let g:indent_guides_guide_size = 1
 "let g:indent_guides_enable_on_vim_startup = 1
+
+
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
@@ -281,36 +346,14 @@ nnoremap <silent> ]q :cnext<CR>
 nnoremap <silent> [Q :c<C-u>cfirst<CR>
 nnoremap <silent> ]Q :c<C-u>clast<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            colorschemeの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
 colorscheme molokai
 set t_Co=256
 let g:molokai_original=1
 let g:indentLine_color_term = 111
 let g:indentLine_color_gui = '#708090'
 
-"quickrunの設定
-let g:quickrun_config = {
-\    '_': {
-\       'outputter/buffer/split' : ':botright',
-\       'outputter/buffer/close_on_empty' : 1,
-\       'runner': 'vimproc',
-\       'runner/vimproc/updatetime': 40,
-\       'hook/shabadoubi_touch_henshin/enable': 1,
-\       'hook/shabadoubi_touch_henshin/wait': 20,
-\       'outputter': 'multi:buffer:quickfix',
-\       'hook/close_buffer/enable_empty data': 1,
-\       'hook/close_buffer/enable_failure': 1,
-\       'hook/close_quickfix/enable_exit' : 1,
-\      'hook/unite_quickfix/enable_failure' : 1,
-\       'hook/close_unite_quickfix/enable_hook_loaded' : 1,
-\    },
-\}
-"Uniteへ出力するとき
-"\       'hook/unite_quickfix/enable_failure' : 1,
-"\       'hook/close_unite_quickfix/enable_hook_loaded' : 1,
-
-autocmd QuickFixCmdPost *grep* cwindow
-
-"vim-operator-blockwiseの設定
-nmap YY <Plug>(operator-blockwise-yank-head)
-nmap DD <Plug>(operator-blockwise-delete-head)
-nmap CC <Plug>(operator-blockwise-change-head)
