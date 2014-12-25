@@ -45,7 +45,10 @@ NeoBundle 'css3-syntax-plus'
 NeoBundle 'html5.vim'
 NeoBundle 'c.vim'
 NeoBundle 'Pydiction'
-NeoBundle 'mitechie/pyflakes-pathogen'
+NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'kevinw/pyflakes-vim'
+NeoBundle 'nvie/vim-flake8'
+"NeoBundle 'mitechie/pyflakes-pathogen'
 "NeoBundle 'git://github.com/Lokaltog/vim-powerline'
 NeoBundle 'basyura/TweetVim'
 NeoBundle 'mattn/webapi-vim'
@@ -200,6 +203,35 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 """"""""""""""""""""""""""""""""""""""""""""
 "
+"            unite.vimの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+" 入力モードで開始する
+" let g:unite_enable_start_insert=1
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" ファイル一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+" 常用セット
+nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+" 全部乗せ
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
 "            vim-operator-blockwiseの設定
 "
 """"""""""""""""""""""""""""""""""""""""""""
@@ -306,6 +338,7 @@ nnoremap <C-l> :set relativenumber!<CR>
 " 前回終了したカーソル行に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 set showmatch
+set matchtime=1
 set laststatus=2
 set showcmd
 set cursorline
@@ -330,7 +363,7 @@ set hidden
 set noswapfile
 set autoread
 syntax on
-nmap <C-s> :source /usr/share/vim/vimrc<CR>
+nmap <C-s> :source ~/.vimrc<CR>
 "inoremap <Up> <Nop>
 "inoremap <Down> <Nop>
 noremap <Up> <Nop>
@@ -345,6 +378,7 @@ nnoremap <silent> [q :cprevious<CR>
 nnoremap <silent> ]q :cnext<CR>
 nnoremap <silent> [Q :c<C-u>cfirst<CR>
 nnoremap <silent> ]Q :c<C-u>clast<CR>
+nnoremap Y y$
 
 """"""""""""""""""""""""""""""""""""""""""""
 "
