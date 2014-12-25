@@ -76,6 +76,7 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'git://github.com/Yggdroot/indentLine'
 NeoBundle 'git://github.com/thinca/vim-quickrun'
 NeoBundle 'git://github.com/thinca/vim-qfreplace'
+NeoBundle 'thinca/vim-template'
 NeoBundle 'git://github.com/osyo-manga/vim-operator-blockwise'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'osyo-manga/shabadou.vim'
@@ -229,6 +230,23 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vspli
 " ESCキーを2回押すと終了する
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            vim-templateの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+" テンプレート中に含まれる特定文字列を置き換える
+"autocmd MyAutoCmd User plugin-template-loaded call s:template_keywords()
+"function! s:template_keywords()
+"silent! %s/<+DATE+>/\=strftime('%Y-%m-%d')/g
+"silent! %s/<+FILENAME+>/\=expand('%:r')/g
+"endfunction
+"" テンプレート中に含まれる'<+CURSOR+>'にカーソルを移動
+"autocmd MyAutoCmd User plugin-template-loaded
+"\   if search('<+CURSOR+>')
+"\ |   silent! execute 'normal! "_da>'
+"\ | endif
 
 """"""""""""""""""""""""""""""""""""""""""""
 "
