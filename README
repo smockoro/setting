@@ -10,6 +10,9 @@
 3.molokai.vim
     This is the color scheme. so, move color folder.
 
-4.zshrc.org
-    Rename zshrc.org to zshrc. And move to~/.
-    If you want to use zsh in LinuxMint, type "$sudo apt-get install zsh"
+4.zshrc
+    move to ~/
+
+5.Template Directory
+    This Directory has template files using vim-template.
+    Move to .vim/
