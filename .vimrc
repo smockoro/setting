@@ -10,11 +10,11 @@
 " properly set to work with the Vim-related packages available in Debian.
 runtime! debian.vim
 
-"encoding settings
+" encoding settings
 set encoding=utf-8
 scriptencoding utf-8
 
-"zsh上でsourceすることを防ぐ
+" zsh上でsourceすることを防ぐ
 "return" 2>&- || "exit"
 
 " Uncomment the next line to make Vim more Vi-compatible
@@ -73,6 +73,7 @@ NeoBundle 'git://github.com/kana/vim-textobj-user'
 NeoBundle 'git://github.com/kana/vim-textobj-line'
 NeoBundle 'git://github.com/kana/vim-textobj-function'
 NeoBundle 'git://github.com/kana/vim-textobj-syntax'
+NeoBundle 'tpope/vim-abolish'
 NeoBundle 'git://github.com/tpope/vim-surround'
 NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'alpaca-tc/alpaca_powertabline'
@@ -92,7 +93,7 @@ NeoBundle 'kana/vim-operator-user'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'osyo-manga/shabadou.vim'
 
-"Haskell Plugin
+" Haskell Plugin
 NeoBundle 'git://github.com/eagletmt/ghcmod-vim'
 NeoBundle 'git://github.com/dag/vim2hs'
 NeoBundle 'git://github.com/eagletmt/neco-ghc'
@@ -101,9 +102,57 @@ NeoBundle 'git://github.com/kana/vim-filetype-haskell'
 NeoBundle 'git://github.com/thinca/vim-ref'
 NeoBundle 'git://github.com/ujihisa/ref-hoogle'
 
-"Git Plugin
+" Git Plugin
 NeoBundle 'cohama/agit.vim'
 NeoBundle 'rhysd/committia.vim'
+
+NeoBundle 'rhysd/vim-grammarous'
+
+" Mark Plugin
+NeoBundle 'jacquesbh/vim-showmarks'
+NeoBundle 'tacroe/unite-mark'
+"""""""""""""""""""""""""""""""""""""""""""""
+"
+"          mark関連の設定
+"
+"""""""""""""""""""""""""""""""""""""""""""""
+" marks {{{
+set viminfo='50,\"1000,:0,n~/.vim/viminfo
+set foldmethod=marker
+let g:showmarks_marks_notime = 1
+let g:unite_source_mark_marks = '01abcABCDEFGHIJKLNMOPQRSTUVWXYZ'
+let g:showmarks_enable       = 0
+if !exists('g:markrement_char')
+    let g:markrement_char = [
+    \     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+    \     'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+    \     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    \     'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+    \ ]
+en
+
+fu! s:AutoMarkrement()
+    if !exists('b:markrement_pos')
+        let b:markrement_pos = 0
+    else
+        let b:markrement_pos = (b:markrement_pos + 1) % len(g:markrement_char)
+    en
+    exe 'mark' g:markrement_char[b:markrement_pos]
+    echo 'marked' g:markrement_char[b:markrement_pos]
+endf
+
+aug show-marks-sync
+     au!
+     au BufReadPost * sil! ShowMarksOnce
+aug END
+
+nnoremap [Mark] <Nop>
+nmap ,m [Mark]
+nnoremap <silent> [Mark]m :Unite mark<CR>
+nnoremap [Mark] :<C-u>call <SID>AutoMarkrement()<CR><CR>:ShowMarksOnce<CR>
+com! -bar MarksDelete sil :delm! | :delm 0-9A-Z | :wv! | :ShowMarksOnce
+nnoremap <silent>[Mark]d :MarksDelete<CR>
+"}}}
 
 filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""
@@ -212,7 +261,7 @@ let g:quickrun_config = {
 \       'hook/close_unite_quickfix/enable_hook_loaded' : 1,
 \    },
 \}
-"Uniteへ出力するとき
+" Uniteへ出力するとき
 "\       'hook/unite_quickfix/enable_failure' : 1,
 "\       'hook/close_unite_quickfix/enable_hook_loaded' : 1,
 
@@ -291,6 +340,31 @@ nnoremap CC <Plug>(operator-blockwise-change-head)
 nnoremap <silent>sa <Plug>(operator-surround-append)
 nnoremap <silent>sd <Plug>(operator-surround-delete)
 nnoremap <silent>sr <Plug>(operator-surround-repeat)
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            committia.vimの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+" Gitのデフォルトエディタをvimに変更しておく必要がある？
+" Macならば以下のコマンド
+" git config --global core.editor /Applications/MacVim.app/Contents/MacOS/Vim
+"
+let g:committia_hooks = {}
+function! g:committia_hooks.edit_open(info)
+        " Additional settings
+        setlocal spell
+        
+        " If no commit message, start with insert mode
+        if a:info.vcs ==# 'git' && getline(1) ==# ''
+          startinsert
+        end
+        
+        " Scroll the diff window from insert mode
+        " Map <C-n> and <C-p>
+        imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
+        imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""
 "
@@ -432,6 +506,8 @@ nnoremap <silent> ]q :cnext<CR>
 nnoremap <silent> [Q :c<C-u>cfirst<CR>
 nnoremap <silent> ]Q :c<C-u>clast<CR>
 nnoremap Y y$
+" 折り畳みの設定　
+" set fdm=indent
 
 """"""""""""""""""""""""""""""""""""""""""""
 "
