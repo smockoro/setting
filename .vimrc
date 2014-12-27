@@ -10,13 +10,22 @@
 " properly set to work with the Vim-related packages available in Debian.
 runtime! debian.vim
 
+"encoding settings
+set encoding=utf-8
+scriptencoding utf-8
+
+"zsh上でsourceすることを防ぐ
+"return" 2>&- || "exit"
+
 " Uncomment the next line to make Vim more Vi-compatible
 " NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
 " options, so any other options should be set AFTER setting 'compatible'.
 "set compatible
 set runtimepath^=$HOME/.vim
 set runtimepath+=$HOME/.vim/after
-set nocompatible
+if &compatible
+  set nocompatible
+endif
 filetype off
 
 if has('vim_starting')
@@ -44,7 +53,7 @@ NeoBundle 'jQuery'
 NeoBundle 'css3-syntax-plus'
 NeoBundle 'html5.vim'
 NeoBundle 'c.vim'
-NeoBundle 'Pydiction'
+"NeoBundle 'Pydiction'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'kevinw/pyflakes-vim'
 NeoBundle 'nvie/vim-flake8'
@@ -78,9 +87,12 @@ NeoBundle 'git://github.com/thinca/vim-quickrun'
 NeoBundle 'git://github.com/thinca/vim-qfreplace'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'git://github.com/osyo-manga/vim-operator-blockwise'
+NeoBundle 'rhysd/vim-operator-surround'
+NeoBundle 'kana/vim-operator-user'
 NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'osyo-manga/shabadou.vim'
-"Haskell
+
+"Haskell Plugin
 NeoBundle 'git://github.com/eagletmt/ghcmod-vim'
 NeoBundle 'git://github.com/dag/vim2hs'
 NeoBundle 'git://github.com/eagletmt/neco-ghc'
@@ -88,6 +100,10 @@ NeoBundle 'git://github.com/eagletmt/unite-haddock'
 NeoBundle 'git://github.com/kana/vim-filetype-haskell'
 NeoBundle 'git://github.com/thinca/vim-ref'
 NeoBundle 'git://github.com/ujihisa/ref-hoogle'
+
+"Git Plugin
+NeoBundle 'cohama/agit.vim'
+NeoBundle 'rhysd/committia.vim'
 
 filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""
@@ -233,11 +249,20 @@ au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
 """"""""""""""""""""""""""""""""""""""""""""
 "
+"            vimfilerの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> ,vf :VimFiler<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
 "            vim-templateの設定
 "
 """"""""""""""""""""""""""""""""""""""""""""
 " テンプレート中に含まれる特定文字列を置き換える
 augroup MyAutoCmd
+    autocmd!
+augroup END
 autocmd MyAutoCmd User plugin-template-loaded call s:template_keywords()
 function! s:template_keywords()
     silent! %s/<+DATE+>/\=strftime('%Y-%m-%d')/g
@@ -254,9 +279,18 @@ autocmd MyAutoCmd User plugin-template-loaded
 "            vim-operator-blockwiseの設定
 "
 """"""""""""""""""""""""""""""""""""""""""""
-nmap YY <Plug>(operator-blockwise-yank-head)
-nmap DD <Plug>(operator-blockwise-delete-head)
-nmap CC <Plug>(operator-blockwise-change-head)
+nnoremap YY <Plug>(operator-blockwise-yank-head)
+nnoremap DD <Plug>(operator-blockwise-delete-head)
+nnoremap CC <Plug>(operator-blockwise-change-head)
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            vim-operator-surroundの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent>sa <Plug>(operator-surround-append)
+nnoremap <silent>sd <Plug>(operator-surround-delete)
+nnoremap <silent>sr <Plug>(operator-surround-repeat)
 
 """"""""""""""""""""""""""""""""""""""""""""
 "
@@ -369,20 +403,20 @@ inoremap <C-k> <Up>
 "inoremap [ []<Left>
 "inoremap ( ()<Left>
 "inoremap < <><Left>
-cmap <C-a> <Home>
-cmap <C-e> <End>
-cmap <C-l> <Right>
-cmap <C-h> <Left>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-l> <Right>
+cnoremap <C-h> <Left>
 "imap <C-b> <ESC>bi
 "imap <C-w> <ESC><right>wi
-imap <C-d> <del>
-cmap <C-d> <del>
+inoremap <C-d> <del>
+cnoremap <C-d> <del>
 set nobackup
 set hidden
 set noswapfile
 set autoread
 syntax on
-nmap <C-s> :source ~/.vimrc<CR>
+nnoremap <C-s> :source ~/.vimrc<CR>
 "inoremap <Up> <Nop>
 "inoremap <Down> <Nop>
 noremap <Up> <Nop>
