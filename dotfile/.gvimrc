@@ -44,5 +44,10 @@ imap <c-l> <Right>
 
 set lines=55
 set columns=120
-set guifont=Ricty\ for\ Powerline\:h20
+if has('unix')
+  set guifont=Sauce\ Code\ Powerline\ 17
+endif
+if has('mac')
+  set guifont=Sauce\ Code\ Powerline:h17
+endif
 let g:Powerline_symbols = 'fancy'
