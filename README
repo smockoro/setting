@@ -1,18 +1,32 @@
-1.vimrc
-    setting of vim 
-    then MacVim 
-        replace this vimrc from vimrc in MacVim.app
-    then LinuxMint
-        type "#cp ~/setting/vimrc /usr/share/vim/"
-2.gvimrc
-    same setting of vimrc
+1. vimrc
+    基本的なvimの設定を記述したファイル．
+    ホームディレクトリの直下に配置(~/.vimrc)
+    *備考
+    完全にクリーンな状態からはプラグイン追加のためにneobundleを導入する必要がある.
+    1 - ~/.vim/bundleディレクトリを作成
+    2 - ~/.vim/bundleの中で以下のコマンドを実行
+        $ git clone https://github.com/Shougo/neobundle.vim
 
-3.molokai.vim
-    This is the color scheme. so, move color folder.
+2. gvimrc
+    linux用とMac用が２つ存在．統合予定．
 
-4.zshrc
-    move to ~/
+3. molokai.vim
+    カラースキーム．
+    ~/.vim/colorに配置．場所がなければ作る．
 
-5.Template Directory
-    This Directory has template files using vim-template.
-    Move to .vim/
+4. zshrc
+    ~/.zshrcとしてホームディレクトリ以下に配置
+
+5. Templateディレクトリ
+    vim-templateというプラグインで使用する．
+    ~/.vim/templateとして配置．
+
+6. keymapディレクトリ
+    Macでのみ利用できる．
+    Karabinerというキーマップ設定アプリで利用する．
+    配置は~/Library/Applications Support/Karabiner/private.xml
+
+7. Java SE 
+    committia.vimで使用．
+    http://www.oracle.com/technetwork/java/javase/downloads/index.html
+    上記URLのJava Platformで最新のJava SEを導入する．
