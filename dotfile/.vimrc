@@ -73,6 +73,7 @@ NeoBundle 'git://github.com/kana/vim-textobj-user'
 NeoBundle 'git://github.com/kana/vim-textobj-line'
 NeoBundle 'git://github.com/kana/vim-textobj-function'
 NeoBundle 'git://github.com/kana/vim-textobj-syntax'
+NeoBundle 'kana/vim-submode'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'git://github.com/tpope/vim-surround'
 NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
@@ -80,12 +81,14 @@ NeoBundle 'alpaca-tc/alpaca_powertabline'
 NeoBundle 'git://github.com/osyo-manga/vim-over'
 NeoBundle 'git://github.com/terryma/vim-expand-region'
 NeoBundle 'git://github.com/coderifous/textobj-word-column.vim'
-NeoBundle 'git://github.com/mhinz/vim-startify'
+"NeoBundle 'git://github.com/mhinz/vim-startify'
+NeoBundle 'tyru/nextfile.vim'
 NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'git://github.com/Yggdroot/indentLine'
 NeoBundle 'git://github.com/thinca/vim-quickrun'
 NeoBundle 'git://github.com/thinca/vim-qfreplace'
+NeoBundle 'thinca/vim-splash'
 NeoBundle 'thinca/vim-template'
 NeoBundle 'git://github.com/osyo-manga/vim-operator-blockwise'
 NeoBundle 'rhysd/vim-operator-surround'
@@ -106,6 +109,7 @@ NeoBundle 'git://github.com/ujihisa/ref-hoogle'
 NeoBundle 'cohama/agit.vim'
 NeoBundle 'rhysd/committia.vim'
 
+" En Grammar Check Plugin
 NeoBundle 'rhysd/vim-grammarous'
 
 " Mark Plugin
@@ -214,12 +218,9 @@ let g:necoghc_enable_detailed_browse = 1
 "            ghcmod-vimの設定
 "
 """"""""""""""""""""""""""""""""""""""""""""
-if has('unix')
-  let $PATH = $PATH.':'.expand('~/.cabal/bin')
-endif
-if has('mac')
-  let $PATH = $PATH.':'.expand('/Users/ooshimatakahiro/Library/Haskell/bin')
-endif
+let $PATH = $PATH.':'.expand('/Users/ooshimatakahiro/Library/Haskell/bin')
+"let $PATH = $PATH.':'.expand('~/.cabal/bin')
+
 
 """"""""""""""""""""""""""""""""""""""""""""
 "
@@ -371,6 +372,38 @@ endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""
 "
+"            vim-submodeの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+" ウィンドウサイズの設定を楽に
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '+', '<C-w>-')
+call submode#map('winsize', 'n', '', '-', '<C-w>+')
+
+" タブ変更をgTgTgT...からgTTTTTT...とできるように変更
+call submode#enter_with('changetab', 'n', '', 'gt', 'gt')
+call submode#enter_with('changetab', 'n', '', 'gT', 'gT')
+call submode#map('changetab', 'n', '', 't', 'gt')
+call submode#map('changetab', 'n', '', 'T', 'gT')
+
+" 時系列的にundo/redoをするg+/g-を楽に
+call submode#enter_with('undo/redo', 'n', 'g-', 'g-')
+call submode#enter_with('undo/redo', 'n', 'g+', 'g+')
+call submode#map('undo/redo', 'n', '', '-', 'g-')
+call submode#map('undo/redo', 'n', '', '+', 'g+')
+
+" nextfile.vimを使いやすくする
+call submode#enter_with('nextfile', 'n', 'r', '<Leader>j', '<Plug>(nextfile-next)')
+call submode#enter_with('nextfile', 'n', 'r', '<Leader>k', '<Plug>(nextfile-previous)')
+call submode#map('nextfile', 'n', 'r', 'j', '<Plug>(nextfile-next)')
+call submode#map('nextfile', 'n', 'r', 'k', '<Plug>(nextfile-previous)')
+""""""""""""""""""""""""""""""""""""""""""""
+"
 "            indent-guidesの設定
 "
 """"""""""""""""""""""""""""""""""""""""""""
@@ -413,10 +446,38 @@ endif
 "set autowrite		" Automatically save before commands like :next and :make
 "set hidden             " Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
+" Vim5 and later versions support syntax highlighting. Uncommenting the next
+" line enables syntax highlighting by default.
+if has("syntax")
+  syntax on
+endif
 
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
 "set background=dark
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+"if has("autocmd")
+"  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+"endif
+
+" Uncomment the following to have Vim load indentation rules and plugins
+" according to the detected filetype.
+"if has("autocmd")
+"  filetype plugin indent on
+"endif
+
+" The following are commented out as they cause vim to behave a lot
+" differently from regular Vi. They are highly recommended though.
+"set showcmd   	 " Show (partial) command in status line.
+"set showmatch   	 " Show matching brackets.
+"set ignorecase   	 " Do case insensitive matching
+"set smartcase   	 " Do smart case matching
+"set incsearch   	 " Incremental search
+"set autowrite   	 " Automatically save before commands like :next and :make
+"set hidden         	" Hide buffers when they are abandoned
+"set mouse=a   	 " Enable mouse usage (all modes)
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
@@ -456,6 +517,8 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-l> <Right>
 cnoremap <C-h> <Left>
+"imap <C-b> <ESC>bi
+"imap <C-w> <ESC><right>wi
 inoremap <C-d> <del>
 cnoremap <C-d> <del>
 set nobackup
