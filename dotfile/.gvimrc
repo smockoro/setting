@@ -14,8 +14,8 @@
 " downloads for the colorschemes on vim.org
 
 " Source a global configuration file if available
-if filereadable("/etc/vim/gvimrc.local")
-  source /etc/vim/gvimrc.local
+" if filereadable("/etc/vim/gvimrc.local")
+"   source /etc/vim/gvimrc.local
 endif
 
 " gvimrc add original
