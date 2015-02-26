@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # vim: set fileencoding=utf-8 :
 #
-# Author:   Takahiro Oshima
+# Author:   Takahiro Oshima <tarotora51@gmail.com>
 # License:  MIT License
 # Created:  <+DATE+>
 #
