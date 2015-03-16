@@ -3,8 +3,14 @@
 ########################################
 # 環境変数
 export LANG=ja_JP.UTF-8
- 
- 
+#export PATH=/usr/local/bin:/usr/bin
+# PATH
+PATH=/bin
+PATH=$PATH:/usr/local/bin
+PATH=$PATH:/usr/bin
+PATH=$PATH:/usr/local/sbin
+export PATH 
+
 # 色を使用出来るようにする
 autoload -Uz colors
 colors
@@ -163,11 +169,9 @@ alias ll='ls -l'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias mkdir='mkdir -p'
-alias py2='python2'
-alias py3='python3'
  
-alias pd='popd'
+alias mkdir='mkdir -p'
+ 
 alias edit='vim --remote-tab-silent'
 alias e=edit
 alias quicklook='qlmanage -p'
