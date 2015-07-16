@@ -39,6 +39,9 @@ endif
 NeoBundle 'git://github.com/Shougo/echodoc.git'
 "NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
 NeoBundle 'git://github.com/Shougo/vim-vcs.git'
@@ -116,12 +119,6 @@ NeoBundle 'rhysd/vim-grammarous'
 " Mark Plugin
 NeoBundle 'jacquesbh/vim-showmarks'
 NeoBundle 'tacroe/unite-mark'
-
-" Markdown Plugin
-"NeoBundle 'mattn/mkdpreview-vim'
-NeoBundle 'Markdown'
-NeoBundle 'suan/vim-instant-markdown'
-
 """""""""""""""""""""""""""""""""""""""""""""
 "
 "          mark関連の設定
@@ -166,6 +163,13 @@ nnoremap <silent>[Mark]d :MarksDelete<CR>
 "}}}
 
 filetype plugin indent on
+"""""""""""""""""""""""""""""""""""""""""""""
+"
+"          neobundleの設定
+"
+"""""""""""""""""""""""""""""""""""""""""""""
+" ~/neobundle.log にログを出力する
+let g:neobundle#log_filename = $HOME . "/neobundle.log"
 """""""""""""""""""""""""""""""""""""""""""""
 "
 "          neocompleteの設定
@@ -243,6 +247,29 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""
 "
+"            neosnippetの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+ 
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+ 
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
 "            neco-ghcの設定
 "
 """"""""""""""""""""""""""""""""""""""""""""
@@ -254,7 +281,7 @@ let g:necoghc_enable_detailed_browse = 1
 "            ghcmod-vimの設定
 "
 """"""""""""""""""""""""""""""""""""""""""""
-let $PATH = $PATH.':'.expand('/Users/mockoro/Library/Haskell/bin/')
+let $PATH = $PATH.':'.expand('/Users/ooshimatakahiro/Library/Haskell/bin')
 "let $PATH = $PATH.':'.expand('~/.cabal/bin')
 
 
@@ -438,7 +465,6 @@ call submode#enter_with('nextfile', 'n', 'r', '<Leader>j', '<Plug>(nextfile-next
 call submode#enter_with('nextfile', 'n', 'r', '<Leader>k', '<Plug>(nextfile-previous)')
 call submode#map('nextfile', 'n', 'r', 'j', '<Plug>(nextfile-next)')
 call submode#map('nextfile', 'n', 'r', 'k', '<Plug>(nextfile-previous)')
-
 """"""""""""""""""""""""""""""""""""""""""""
 "
 "            indent-guidesの設定
@@ -451,6 +477,38 @@ call submode#map('nextfile', 'n', 'r', 'k', '<Plug>(nextfile-previous)')
 "let g:indent_guides_enable_on_vim_startup = 1
 
 
+" Vim5 and later versions support syntax highlighting. Uncommenting the next
+" line enables syntax highlighting by default.
+if has("syntax")
+  syntax on
+endif
+
+" If using a dark background within the editing area and syntax highlighting
+" turn on this option as well
+"set background=dark
+
+" Uncomment the following to have Vim jump to the last position when
+" reopening a file
+"if has("autocmd")
+"  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+"endif
+
+" Uncomment the following to have Vim load indentation rules and plugins
+" according to the detected filetype.
+"if has("autocmd")
+"  filetype plugin indent on
+"endif
+
+" The following are commented out as they cause vim to behave a lot
+" differently from regular Vi. They are highly recommended though.
+"set showcmd		" Show (partial) command in status line.
+"set showmatch		" Show matching brackets.
+"set ignorecase		" Do case insensitive matching
+"set smartcase		" Do smart case matching
+"set incsearch		" Incremental search
+"set autowrite		" Automatically save before commands like :next and :make
+"set hidden             " Hide buffers when they are abandoned
+"set mouse=a		" Enable mouse usage (all modes)
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
@@ -513,7 +571,7 @@ set cursorline
 
 " When insert mode, enable hjkl and enable go to home/end.
 inoremap <C-j> <Down>
-inoremap <C-k> <Up>
+"inoremap <C-k> <Up>
 "inoremap { {}<Left>
 "inoremap [ []<Left>
 "inoremap ( ()<Left>
@@ -576,9 +634,3 @@ let g:molokai_original=1
 let g:indentLine_color_term = 111
 let g:indentLine_color_gui = '#708090'
 
-""""""""""""""""""""""""""""""""""""""""""""
-"
-"            undofileの設定
-"
-""""""""""""""""""""""""""""""""""""""""""""
-:set undodir=D:~/.vim/undo
