@@ -29,98 +29,99 @@ endif
 filetype off
 
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
+    set runtimepath+=~/.vim/bundle/neobundle.vim
+    call neobundle#begin(expand('~/.vim/bundle/'))
+    NeoBundleFetch 'Shougo/neobundle.vim'
 
-  call neobundle#begin(expand('~/.vim/bundle/'))
-  NeoBundleFetch 'Shougo/neobundle.vim'
+    "NeoBundle 'git://github.com/Shougo/clang_complete.git'
+    NeoBundle 'git://github.com/Shougo/echodoc.git'
+    "NeoBundle 'git://github.com/Shougo/neocomplcache.git'
+    NeoBundle 'Shougo/neocomplete'
+    NeoBundle 'Shougo/neomru.vim'
+    NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
+    NeoBundle 'git://github.com/Shougo/unite.vim.git'
+    NeoBundle 'git://github.com/Shougo/vim-vcs.git'
+    NeoBundle 'git://github.com/Shougo/vimfiler.git'
+    NeoBundle 'git://github.com/Shougo/vimshell.git'
+    NeoBundle 'git://github.com/Shougo/vinarise.git'
+    NeoBundle 'git://github.com/Shougo/vimproc'
+    "NeoBundle 'Indent-Guides'
+    NeoBundle 'EasyMotion'
+    NeoBundle 'JavaScript-syntax'
+    NeoBundle 'pangloss/vim-javascript'
+    NeoBundle 'jQuery'
+    NeoBundle 'css3-syntax-plus'
+    NeoBundle 'html5.vim'
+    NeoBundle 'c.vim'
+    "NeoBundle 'Pydiction'
+    NeoBundle 'davidhalter/jedi-vim'
+    NeoBundle 'kevinw/pyflakes-vim'
+    NeoBundle 'nvie/vim-flake8'
+    "NeoBundle 'mitechie/pyflakes-pathogen'
+    "NeoBundle 'git://github.com/Lokaltog/vim-powerline'
+    NeoBundle 'basyura/TweetVim'
+    NeoBundle 'mattn/webapi-vim'
+    NeoBundle 'basyura/twibill.vim'
+    NeoBundle 'tyru/open-browser.vim'
+    NeoBundle 'h1mesuke/unite-outline'
+    NeoBundle 'basyura/bitly.vim'
+    NeoBundle 'kakkyz81/evervim'
+    NeoBundle 'git://github.com/thinca/vim-portal'
+    NeoBundle 'git://github.com/tpope/vim-commentary'
+    NeoBundle 'git://github.com/kana/vim-textobj-entire'
+    NeoBundle 'git://github.com/kana/vim-textobj-user'
+    NeoBundle 'git://github.com/kana/vim-textobj-line'
+    NeoBundle 'git://github.com/kana/vim-textobj-function'
+    NeoBundle 'git://github.com/kana/vim-textobj-syntax'
+    NeoBundle 'kana/vim-submode'
+    NeoBundle 'tpope/vim-abolish'
+    NeoBundle 'git://github.com/tpope/vim-surround'
+    NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+    NeoBundle 'alpaca-tc/alpaca_powertabline'
+    NeoBundle 'git://github.com/osyo-manga/vim-over'
+    NeoBundle 'git://github.com/terryma/vim-expand-region'
+    NeoBundle 'git://github.com/coderifous/textobj-word-column.vim'
+    "NeoBundle 'git://github.com/mhinz/vim-startify'
+    NeoBundle 'tyru/nextfile.vim'
+    NeoBundle 'kannokanno/previm'
+    NeoBundle 'tyru/open-browser.vim'
+    NeoBundle 'git://github.com/Yggdroot/indentLine'
+    NeoBundle 'git://github.com/thinca/vim-quickrun'
+    NeoBundle 'git://github.com/thinca/vim-qfreplace'
+    NeoBundle 'thinca/vim-splash'
+    NeoBundle 'thinca/vim-template'
+    NeoBundle 'git://github.com/osyo-manga/vim-operator-blockwise'
+    NeoBundle 'rhysd/vim-operator-surround'
+    NeoBundle 'kana/vim-operator-user'
+    NeoBundle 'osyo-manga/unite-quickfix'
+    NeoBundle 'osyo-manga/shabadou.vim'
+
+    " Haskell Plugin
+    NeoBundle 'git://github.com/eagletmt/ghcmod-vim'
+    NeoBundle 'git://github.com/dag/vim2hs'
+    NeoBundle 'git://github.com/eagletmt/neco-ghc'
+    NeoBundle 'git://github.com/eagletmt/unite-haddock'
+    NeoBundle 'git://github.com/kana/vim-filetype-haskell'
+    NeoBundle 'git://github.com/thinca/vim-ref'
+    NeoBundle 'git://github.com/ujihisa/ref-hoogle'
+
+    " Git Plugin
+    NeoBundle 'cohama/agit.vim'
+    NeoBundle 'rhysd/committia.vim'
+
+    " En Grammar Check Plugin
+    NeoBundle 'rhysd/vim-grammarous'
+
+    " Mark Plugin
+    NeoBundle 'jacquesbh/vim-showmarks'
+    NeoBundle 'tacroe/unite-mark'
+
+    " Markdown Plugin
+    "NeoBundle 'mattn/mkdpreview-vim'
+    NeoBundle 'Markdown'
+    NeoBundle 'suan/vim-instant-markdown'
   call neobundle#end()
 endif
-"NeoBundle 'git://github.com/Shougo/clang_complete.git'
-NeoBundle 'git://github.com/Shougo/echodoc.git'
-"NeoBundle 'git://github.com/Shougo/neocomplcache.git'
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
-NeoBundle 'git://github.com/Shougo/unite.vim.git'
-NeoBundle 'git://github.com/Shougo/vim-vcs.git'
-NeoBundle 'git://github.com/Shougo/vimfiler.git'
-NeoBundle 'git://github.com/Shougo/vimshell.git'
-NeoBundle 'git://github.com/Shougo/vinarise.git'
-NeoBundle 'git://github.com/Shougo/vimproc'
-"NeoBundle 'Indent-Guides'
-NeoBundle 'EasyMotion'
-NeoBundle 'JavaScript-syntax'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'jQuery'
-NeoBundle 'css3-syntax-plus'
-NeoBundle 'html5.vim'
-NeoBundle 'c.vim'
-"NeoBundle 'Pydiction'
-NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'kevinw/pyflakes-vim'
-NeoBundle 'nvie/vim-flake8'
-"NeoBundle 'mitechie/pyflakes-pathogen'
-"NeoBundle 'git://github.com/Lokaltog/vim-powerline'
-NeoBundle 'basyura/TweetVim'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'basyura/twibill.vim'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'basyura/bitly.vim'
-NeoBundle 'kakkyz81/evervim'
-NeoBundle 'git://github.com/thinca/vim-portal'
-NeoBundle 'git://github.com/tpope/vim-commentary'
-NeoBundle 'git://github.com/kana/vim-textobj-entire'
-NeoBundle 'git://github.com/kana/vim-textobj-user'
-NeoBundle 'git://github.com/kana/vim-textobj-line'
-NeoBundle 'git://github.com/kana/vim-textobj-function'
-NeoBundle 'git://github.com/kana/vim-textobj-syntax'
-NeoBundle 'kana/vim-submode'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'git://github.com/tpope/vim-surround'
-NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-NeoBundle 'alpaca-tc/alpaca_powertabline'
-NeoBundle 'git://github.com/osyo-manga/vim-over'
-NeoBundle 'git://github.com/terryma/vim-expand-region'
-NeoBundle 'git://github.com/coderifous/textobj-word-column.vim'
-"NeoBundle 'git://github.com/mhinz/vim-startify'
-NeoBundle 'tyru/nextfile.vim'
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'git://github.com/Yggdroot/indentLine'
-NeoBundle 'git://github.com/thinca/vim-quickrun'
-NeoBundle 'git://github.com/thinca/vim-qfreplace'
-NeoBundle 'thinca/vim-splash'
-NeoBundle 'thinca/vim-template'
-NeoBundle 'git://github.com/osyo-manga/vim-operator-blockwise'
-NeoBundle 'rhysd/vim-operator-surround'
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'osyo-manga/unite-quickfix'
-NeoBundle 'osyo-manga/shabadou.vim'
-
-" Haskell Plugin
-NeoBundle 'git://github.com/eagletmt/ghcmod-vim'
-NeoBundle 'git://github.com/dag/vim2hs'
-NeoBundle 'git://github.com/eagletmt/neco-ghc'
-NeoBundle 'git://github.com/eagletmt/unite-haddock'
-NeoBundle 'git://github.com/kana/vim-filetype-haskell'
-NeoBundle 'git://github.com/thinca/vim-ref'
-NeoBundle 'git://github.com/ujihisa/ref-hoogle'
-
-" Git Plugin
-NeoBundle 'cohama/agit.vim'
-NeoBundle 'rhysd/committia.vim'
-
-" En Grammar Check Plugin
-NeoBundle 'rhysd/vim-grammarous'
-
-" Mark Plugin
-NeoBundle 'jacquesbh/vim-showmarks'
-NeoBundle 'tacroe/unite-mark'
-
-" Markdown Plugin
-"NeoBundle 'mattn/mkdpreview-vim'
-NeoBundle 'Markdown'
-NeoBundle 'suan/vim-instant-markdown'
 
 """""""""""""""""""""""""""""""""""""""""""""
 "
@@ -553,7 +554,7 @@ nnoremap Y y$
 " leaderを変更した新しい設定
 " 参考 : http://postd.cc/how-to-boost-your-vim-productivity/
 let mapleader = "\<Space>"
-nnoremap <Leader>o :CtrlP<CR>
+" nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 nmap <Leader><Leader> V
 vmap v <Plug>(expand_region_expand)
