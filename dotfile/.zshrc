@@ -6,8 +6,10 @@ export LANG=ja_JP.UTF-8
 #export PATH=/usr/local/bin:/usr/bin
 # PATH
 PATH=/bin
+PATH=$PATH:/sbin
 PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/bin
+PATH=$PATH:/usr/texbin
 PATH=$PATH:/usr/local/sbin
 export PATH 
 
@@ -214,3 +216,20 @@ esac
  
 # vim:set ft=zsh:
 function mkcd(){mkdir -p $1 && cd $1}
+
+# pythonz の設定
+[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
+type direnv > /dev/null 2>&1 && eval "$(direnv hook zsh)" 
+
+# vimへのスイッチバック機能
+fancy-ctrl-z () {
+    if [[ $#BUFFER -eq 0 ]]; then
+        BUFFER="fg"
+        zle accept-line
+    else
+        zle push-input
+        zle clear-screen
+    fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z

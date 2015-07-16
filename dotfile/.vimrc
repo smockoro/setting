@@ -550,6 +550,21 @@ nnoremap Y y$
 " 折り畳みの設定　
 " set fdm=indent
 
+" leaderを変更した新しい設定
+" 参考 : http://postd.cc/how-to-boost-your-vim-productivity/
+let mapleader = "\<Space>"
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
+nmap <Leader><Leader> V
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+nnoremap <CR> G
+nnoremap <BS> gg
+noremap gV `[v`]
+
 """"""""""""""""""""""""""""""""""""""""""""
 "
 "            colorschemeの設定

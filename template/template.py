@@ -6,3 +6,5 @@
 # Created:  <+DATE+>
 #
 <+CURSOR+>
+
+if __name__ == "__main__":
