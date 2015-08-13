@@ -38,6 +38,8 @@ if has('vim_starting')
     "NeoBundle 'git://github.com/Shougo/neocomplcache.git'
     NeoBundle 'Shougo/neocomplete'
     NeoBundle 'Shougo/neomru.vim'
+    NeoBundle 'Shougo/neosnippet'
+    NeoBundle 'Shougo/neosnippet-snippets'
     NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
     NeoBundle 'git://github.com/Shougo/unite.vim.git'
     NeoBundle 'git://github.com/Shougo/vim-vcs.git'
@@ -120,8 +122,36 @@ if has('vim_starting')
     "NeoBundle 'mattn/mkdpreview-vim'
     NeoBundle 'Markdown'
     NeoBundle 'suan/vim-instant-markdown'
+
+
+    " Chef Plugin
+    NeoBundle 'ryuzee/neocomplcache_php_selenium_snippet'
+    let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet_chef_recipe_snippet/autoload/neosnippet/snippets'
+    
+    " Ruby Plugin
+    " 静的解析
+    NeoBundle 'scrooloose/syntastic'
+    
+    " ドキュメント参照
+    NeoBundle 'yuku-t/vim-ref-ri'
+    
+    "メソッド定義元へのジャンプ
+    NeoBundle 'szw/vim-tags'
+
+    " 自動的にendで閉じる
+    NeoBundle 'tpope/vim-endwise'
   call neobundle#end()
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""
+"
+"          rubocopの設定
+"
+"""""""""""""""""""""""""""""""""""""""""""""
+" syntastic_mode_mapをactiveにするとバッファ保存時にsyntasticが走る
+" active_filetypesに、保存時にsyntasticを走らせるファイルタイプを指定する
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
 
 """""""""""""""""""""""""""""""""""""""""""""
 "
@@ -241,6 +271,29 @@ endif
 "inoremap  neocomplcache#smart_close_popup()."\"
 "inoremap  neocomplcache#close_popup()
 "inoremap  neocomplcache#cancel_popup()
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            neosnippetの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+ 
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+ 
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""
 "
