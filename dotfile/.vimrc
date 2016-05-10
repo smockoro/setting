@@ -34,19 +34,19 @@ if has('vim_starting')
     NeoBundleFetch 'Shougo/neobundle.vim'
 
     "NeoBundle 'git://github.com/Shougo/clang_complete.git'
-    NeoBundle 'git://github.com/Shougo/echodoc.git'
+    NeoBundle 'Shougo/echodoc.git'
     "NeoBundle 'git://github.com/Shougo/neocomplcache.git'
     NeoBundle 'Shougo/neocomplete'
     NeoBundle 'Shougo/neomru.vim'
     NeoBundle 'Shougo/neosnippet'
     NeoBundle 'Shougo/neosnippet-snippets'
-    NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
-    NeoBundle 'git://github.com/Shougo/unite.vim.git'
-    NeoBundle 'git://github.com/Shougo/vim-vcs.git'
-    NeoBundle 'git://github.com/Shougo/vimfiler.git'
-    NeoBundle 'git://github.com/Shougo/vimshell.git'
-    NeoBundle 'git://github.com/Shougo/vinarise.git'
-    NeoBundle 'git://github.com/Shougo/vimproc'
+    NeoBundle 'Shougo/neobundle.vim.git'
+    NeoBundle 'Shougo/unite.vim.git'
+    NeoBundle 'Shougo/vim-vcs.git'
+    NeoBundle 'Shougo/vimfiler.git'
+    NeoBundle 'Shougo/vimshell.git'
+    NeoBundle 'Shougo/vinarise.git'
+    NeoBundle 'Shougo/vimproc'
     "NeoBundle 'Indent-Guides'
     NeoBundle 'EasyMotion'
     NeoBundle 'JavaScript-syntax'
@@ -55,11 +55,15 @@ if has('vim_starting')
     NeoBundle 'css3-syntax-plus'
     NeoBundle 'html5.vim'
     NeoBundle 'c.vim'
+
+    " python 関連
     "NeoBundle 'Pydiction'
     NeoBundle 'davidhalter/jedi-vim'
     NeoBundle 'kevinw/pyflakes-vim'
-    NeoBundle 'nvie/vim-flake8'
+    NeoBundle "nvie/vim-flake8"
     "NeoBundle 'mitechie/pyflakes-pathogen'
+    NeoBundle 'tell-k/vim-quick-radon'
+    
     "NeoBundle 'git://github.com/Lokaltog/vim-powerline'
     NeoBundle 'basyura/TweetVim'
     NeoBundle 'mattn/webapi-vim'
@@ -68,44 +72,44 @@ if has('vim_starting')
     NeoBundle 'h1mesuke/unite-outline'
     NeoBundle 'basyura/bitly.vim'
     NeoBundle 'kakkyz81/evervim'
-    NeoBundle 'git://github.com/thinca/vim-portal'
-    NeoBundle 'git://github.com/tpope/vim-commentary'
-    NeoBundle 'git://github.com/kana/vim-textobj-entire'
-    NeoBundle 'git://github.com/kana/vim-textobj-user'
-    NeoBundle 'git://github.com/kana/vim-textobj-line'
-    NeoBundle 'git://github.com/kana/vim-textobj-function'
-    NeoBundle 'git://github.com/kana/vim-textobj-syntax'
+    NeoBundle 'thinca/vim-portal'
+    NeoBundle 'tpope/vim-commentary'
+    NeoBundle 'kana/vim-textobj-entire'
+    NeoBundle 'kana/vim-textobj-user'
+    NeoBundle 'kana/vim-textobj-line'
+    NeoBundle 'kana/vim-textobj-function'
+    NeoBundle 'kana/vim-textobj-syntax'
     NeoBundle 'kana/vim-submode'
     NeoBundle 'tpope/vim-abolish'
-    NeoBundle 'git://github.com/tpope/vim-surround'
+    NeoBundle 'tpope/vim-surround'
     NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
     NeoBundle 'alpaca-tc/alpaca_powertabline'
-    NeoBundle 'git://github.com/osyo-manga/vim-over'
-    NeoBundle 'git://github.com/terryma/vim-expand-region'
-    NeoBundle 'git://github.com/coderifous/textobj-word-column.vim'
+    NeoBundle 'osyo-manga/vim-over'
+    NeoBundle 'terryma/vim-expand-region'
+    NeoBundle 'coderifous/textobj-word-column.vim'
     "NeoBundle 'git://github.com/mhinz/vim-startify'
     NeoBundle 'tyru/nextfile.vim'
     NeoBundle 'kannokanno/previm'
     NeoBundle 'tyru/open-browser.vim'
-    NeoBundle 'git://github.com/Yggdroot/indentLine'
-    NeoBundle 'git://github.com/thinca/vim-quickrun'
-    NeoBundle 'git://github.com/thinca/vim-qfreplace'
+    NeoBundle 'Yggdroot/indentLine'
+    NeoBundle 'thinca/vim-quickrun'
+    NeoBundle 'thinca/vim-qfreplace'
     NeoBundle 'thinca/vim-splash'
     NeoBundle 'thinca/vim-template'
-    NeoBundle 'git://github.com/osyo-manga/vim-operator-blockwise'
+    NeoBundle 'osyo-manga/vim-operator-blockwise'
     NeoBundle 'rhysd/vim-operator-surround'
     NeoBundle 'kana/vim-operator-user'
     NeoBundle 'osyo-manga/unite-quickfix'
     NeoBundle 'osyo-manga/shabadou.vim'
 
     " Haskell Plugin
-    NeoBundle 'git://github.com/eagletmt/ghcmod-vim'
-    NeoBundle 'git://github.com/dag/vim2hs'
-    NeoBundle 'git://github.com/eagletmt/neco-ghc'
-    NeoBundle 'git://github.com/eagletmt/unite-haddock'
-    NeoBundle 'git://github.com/kana/vim-filetype-haskell'
-    NeoBundle 'git://github.com/thinca/vim-ref'
-    NeoBundle 'git://github.com/ujihisa/ref-hoogle'
+    NeoBundle 'eagletmt/ghcmod-vim'
+    NeoBundle 'dag/vim2hs'
+    NeoBundle 'eagletmt/neco-ghc'
+    NeoBundle 'eagletmt/unite-haddock'
+    NeoBundle 'kana/vim-filetype-haskell'
+    NeoBundle 'thinca/vim-ref'
+    NeoBundle 'ujihisa/ref-hoogle'
 
     " Git Plugin
     NeoBundle 'cohama/agit.vim'
@@ -136,10 +140,21 @@ if has('vim_starting')
     NeoBundle 'yuku-t/vim-ref-ri'
     
     "メソッド定義元へのジャンプ
-    NeoBundle 'szw/vim-tags'
+    "NeoBundle 'szw/vim-tags'
+    
+    " ctagsに関連した設定
+    "NeoBundle 'soramugi/suto-ctags.vim'
+    NeoBundle 'majutsushi/tagbar'
 
     " 自動的にendで閉じる
     NeoBundle 'tpope/vim-endwise'
+    
+    " colorscheme
+    NeoBundle 'tomasr/molokai'
+
+    " scala
+    NeoBundle 'derekwyatt/vim-scala'
+
   call neobundle#end()
 endif
 
@@ -632,7 +647,21 @@ let g:indentLine_color_gui = '#708090'
 
 """"""""""""""""""""""""""""""""""""""""""""
 "
+"            ctagsの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+let g:auto_ctags = 1
+let g:auto_ctags_direcory_list = ['.git', '.svn']
+nmap <Leader>t :TagbarToggle<CR>
+:set tags=~/.tags,/Users/ooshimatakahiro/tags
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
 "            undofileの設定
 "
 """"""""""""""""""""""""""""""""""""""""""""
 :set undodir=D:~/.vim/undo
+
+let g:tex_conceal=''
+
+au BufRead,BufNewFile *.scala set filetype=scala
