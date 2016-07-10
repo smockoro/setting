@@ -82,7 +82,9 @@ if has('vim_starting')
     NeoBundle 'kana/vim-submode'
     NeoBundle 'tpope/vim-abolish'
     NeoBundle 'tpope/vim-surround'
-    NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+    "NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+    NeoBundle 'vim-airline/vim-airline'
+    NeoBundle 'vim-airline/vim-airline-themes'
     NeoBundle 'alpaca-tc/alpaca_powertabline'
     NeoBundle 'osyo-manga/vim-over'
     NeoBundle 'terryma/vim-expand-region'
@@ -150,7 +152,14 @@ if has('vim_starting')
     NeoBundle 'tpope/vim-endwise'
     
     " colorscheme
+    NeoBundle 'ujihisa/unite-colorscheme'
     NeoBundle 'tomasr/molokai'
+    NeoBundle 'rakr/vim-one'
+    NeoBundle 'tyrannicaltoucan/vim-deep-space'
+    NeoBundle 'tomsik68/vim-crystallite'
+    NeoBundle 'amadeus/vim-evokai'
+    NeoBundle 'notpratheek/vim-luna'
+    NeoBundle 'cesardeazevedo/Fx-ColorScheme'
 
     " scala
     NeoBundle 'derekwyatt/vim-scala'
@@ -640,6 +649,7 @@ noremap gV `[v`]
 "
 """"""""""""""""""""""""""""""""""""""""""""
 colorscheme molokai
+"colorscheme evokai
 set t_Co=256
 let g:molokai_original=1
 let g:indentLine_color_term = 111
@@ -665,3 +675,13 @@ nmap <Leader>t :TagbarToggle<CR>
 let g:tex_conceal=''
 
 au BufRead,BufNewFile *.scala set filetype=scala
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            vim-airlineの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+let g:unite_force_overwrite_statusline=0
+let g:vimfiler_force_overwrite_statusline=0
+let g:airline_powerline_fonts=1
+let g:airline_themes='base16_googlw'
