@@ -14,13 +14,13 @@
 " downloads for the colorschemes on vim.org
 
 " Source a global configuration file if available
-" if filereadable("/etc/vim/gvimrc.local")
-"   source /etc/vim/gvimrc.local
+if filereadable("/etc/vim/gvimrc.local")
+  source /etc/vim/gvimrc.local
 endif
 
 " gvimrc add original
 set background=dark
-colorscheme molokai
+colorscheme one
 set autoindent
 set tabstop=4
 set softtabstop=4
@@ -44,10 +44,5 @@ imap <c-l> <Right>
 
 set lines=55
 set columns=120
-if has('unix')
-  set guifont=Sauce\ Code\ Powerline\ 17
-endif
-if has('mac')
-  set guifont=Sauce\ Code\ Powerline:h17
-endif
+set guifont=Ricty\ for\ Powerline\:h20
 let g:Powerline_symbols = 'fancy'
