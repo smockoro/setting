@@ -5,13 +5,22 @@
 export LANG=ja_JP.UTF-8
 #export PATH=/usr/local/bin:/usr/bin
 # PATH
-PATH=/bin
+#PATH=/usr/local/bin
+PATH=$PATH:/bin
 PATH=$PATH:/sbin
-PATH=$PATH:/usr/local/bin
+# PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/bin
+PATH=$PATH:/usr/sbin
 PATH=$PATH:/usr/texbin
+PATH=$PATH:/usr/local/bin
 PATH=$PATH:/usr/local/sbin
+PATH=$PATH:/usr/local/share/scala-2.11.8/bin/
+PATH=$PATH:/Users/ooshimatakahiro/Downloads/activator-dist-1.3.10/bin/
 export PATH 
+export GOPATH=$HOME/dev
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/.rbenv/shims
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 # 色を使用出来るようにする
 autoload -Uz colors
@@ -219,7 +228,8 @@ function mkcd(){mkdir -p $1 && cd $1}
 
 # pythonz の設定
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
-type direnv > /dev/null 2>&1 && eval "$(direnv hook zsh)" 
+#type direnv > /dev/null 2>&1 && eval "$(direnv hook zsh)" 
+eval "$(direnv hook zsh)"
 
 # vimへのスイッチバック機能
 fancy-ctrl-z () {
@@ -233,3 +243,31 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+# Homebrewでインストールしたgitのパス
+
+
+# ghqとpeco
+bindkey '^]' peco-src
+function peco-src(){
+    local src=$(ghq list --full-path | peco --query "$LBUFFER")
+    if [ -n "$src" ]; then
+        BUFFER="cd $src"
+        zle accept-line
+    fi
+    zle -R -c
+}
+zle -N peco-src
+
+# rbenv
+eval "$(rbenv init -)"
+
+# terminal-notifier
+alias tnot='terminal-notifier -message "Command End"'
+
+# pyenv
+export PYENV_ROOT="${HOME}/.pyenv"
+if [ -d "${PYENV_ROOT}" ]; then
+  export PATH=${PYENV_ROOT}/bin:$PATH
+  eval "$(pyenv init -)"
+fi

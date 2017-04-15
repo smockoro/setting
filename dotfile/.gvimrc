@@ -42,7 +42,8 @@ imap <c-j> <DOWN>
 imap <c-k> <UP>
 imap <c-l> <Right>
 
-set lines=55
-set columns=120
-set guifont=Ricty\ for\ Powerline\:h20
+set lines=40
+set columns=90
+" set guifont=Ricty\ for\ Powerline\:h20
+set guifont=Hack\:h11
 let g:Powerline_symbols = 'fancy'

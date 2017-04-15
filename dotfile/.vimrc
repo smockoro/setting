@@ -49,11 +49,11 @@ if has('vim_starting')
     NeoBundle 'Shougo/vimproc'
     "NeoBundle 'Indent-Guides'
     NeoBundle 'EasyMotion'
-    NeoBundle 'JavaScript-syntax'
-    NeoBundle 'pangloss/vim-javascript'
+    "NeoBundle 'JavaScript-syntax'
+    "NeoBundle 'pangloss/vim-javascript'
     NeoBundle 'jQuery'
     NeoBundle 'css3-syntax-plus'
-    NeoBundle 'html5.vim'
+    "NeoBundle 'html5.vim'
     NeoBundle 'c.vim'
 
     " python 関連
@@ -92,7 +92,6 @@ if has('vim_starting')
     "NeoBundle 'git://github.com/mhinz/vim-startify'
     NeoBundle 'tyru/nextfile.vim'
     NeoBundle 'kannokanno/previm'
-    NeoBundle 'tyru/open-browser.vim'
     NeoBundle 'Yggdroot/indentLine'
     NeoBundle 'thinca/vim-quickrun'
     NeoBundle 'thinca/vim-qfreplace'
@@ -126,9 +125,14 @@ if has('vim_starting')
 
     " Markdown Plugin
     "NeoBundle 'mattn/mkdpreview-vim'
-    NeoBundle 'Markdown'
+    NeoBundle 'plasticboy/vim-markdown'
+    NeoBundle 'kannokanno/previm'
+
+    "NeoBundle 'Markdown'
     NeoBundle 'suan/vim-instant-markdown'
 
+    " qfixgrep
+    NeoBundle 'fuenor/qfixgrep.git'
 
     " Chef Plugin
     NeoBundle 'ryuzee/neocomplcache_php_selenium_snippet'
@@ -137,6 +141,7 @@ if has('vim_starting')
     " Ruby Plugin
     " 静的解析
     NeoBundle 'scrooloose/syntastic'
+    let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/'
     
     " ドキュメント参照
     NeoBundle 'yuku-t/vim-ref-ri'
@@ -164,18 +169,48 @@ if has('vim_starting')
     " scala
     NeoBundle 'derekwyatt/vim-scala'
 
+    " JavaScript Angular.js
+    NeoBundle 'othree/javascript-libraries-syntax.vim'
+    NeoBundleLazy 'leafgarland/typescript-vim', {
+                \ 'autoload' : {
+                \   'filetypes' : ['typescript'] }
+                \}
+    NeoBundleLazy 'jason0x43/vim-js-indent', {
+                \ 'autoload' : {
+                \   'filetypes' : ['javascript', 'typescript', 'html'],
+                \}}
+    "NeoBundleLazy 'clausreinke/typescript-tools', {
+                "\ 'autoload' : {
+                "\   'filetypes' : ['typescript'] }
+                "\}
+
+    NeoBundle 'vim-jp/vim-go-extra'
+
+    NeoBundle 'glidenote/memolist.vim'
+
+    NeoBundle 'dhruvasagar/vim-table-mode'
+
+    " soy template 
+    NeoBundle 'duganchen/vim-soy'
+
+    " velocity template
+    NeoBundle 'lepture/vim-velocity'
+
   call neobundle#end()
 endif
 
+let g:js_indent_typescript = 1
+let g:used_javascript_libs = 'angularjs,jasmine,jquery'
 """""""""""""""""""""""""""""""""""""""""""""
 "
-"          rubocopの設定
+"          rubocopの設定とsyntasticの設定
 "
 """""""""""""""""""""""""""""""""""""""""""""
 " syntastic_mode_mapをactiveにするとバッファ保存時にsyntasticが走る
 " active_filetypesに、保存時にsyntasticを走らせるファイルタイプを指定する
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby', 'go'] }
 let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_go_checkers = ['go', 'golint']
 
 """""""""""""""""""""""""""""""""""""""""""""
 "
@@ -577,7 +612,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set number
-nnoremap <C-k> :set number!<CR>
+" nnoremap <C-k> :set number!<CR>
 set vb
 set relativenumber
 nnoremap <C-l> :set relativenumber!<CR>
@@ -591,7 +626,7 @@ set cursorline
 
 " When insert mode, enable hjkl and enable go to home/end.
 inoremap <C-j> <Down>
-inoremap <C-k> <Up>
+"inoremap <C-k> <Up>
 "inoremap { {}<Left>
 "inoremap [ []<Left>
 "inoremap ( ()<Left>
@@ -639,8 +674,8 @@ vmap <C-v> <Plug>(expand_region_shrink)
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
-nnoremap <CR> G
-nnoremap <BS> gg
+"nnoremap <CR> G
+"nnoremap <BS> gg
 noremap gV `[v`]
 
 """"""""""""""""""""""""""""""""""""""""""""
@@ -685,3 +720,29 @@ let g:unite_force_overwrite_statusline=0
 let g:vimfiler_force_overwrite_statusline=0
 let g:airline_powerline_fonts=1
 let g:airline_themes='base16_googlw'
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            memolist.vimの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+let g:memolist_path = "~/memo/"
+noremap ,mn :MemoNew<CR>
+noremap ,ml :MemoList<CR>
+noremap ,mg :MemoGrep<CR>
+let g:memolist_memo_suffix = "md"
+"let g:memolist_qfixgrep = 1
+let g:memolist_unite = 1
+
+""""""""""""""""""""""""""""""""""""""""""""
+"
+"            markdownプレビューの設定
+"
+""""""""""""""""""""""""""""""""""""""""""""
+au BufRead,BufNewFile *.md set filetype=markdown
+let g:previm_open_cmd = 'open -a Firefox'
+let g:vim_markdown_folding_disabled=1
+
+" goの設定
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+exe "set rtp+=".globpath($GOPATH, "src/github.com/nsf/gocode/vim")
