@@ -196,6 +196,9 @@ if has('vim_starting')
     " velocity template
     NeoBundle 'lepture/vim-velocity'
 
+    " for Java
+    NeoBundle 'ervandew/eclim'
+
   call neobundle#end()
 endif
 
@@ -283,6 +286,15 @@ elseif neobundle#is_installed('neocomplcache')
     let g:neocomplcache_enable_camel_case_completion = 1
     let g:neocomplcache_enable_underbar_completion = 1
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""
+"
+"          jedi-vimの設定
+"
+"""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
 
 """""""""""""""""""""""""""""""""""""""""""""
 "
@@ -468,6 +480,7 @@ augroup END
 autocmd MyAutoCmd User plugin-template-loaded call s:template_keywords()
 function! s:template_keywords()
     silent! %s/<+DATE+>/\=strftime('%Y-%m-%d')/g
+    silent! %s/<+YEAR+>/\=strftime('%Y')/g
     silent! %s/<+FILENAME+>/\=expand('%:r')/g
 endfunction
 " テンプレート中に含まれる'<+CURSOR+>'にカーソルを移動
